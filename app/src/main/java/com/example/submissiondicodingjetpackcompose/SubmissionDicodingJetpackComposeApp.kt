@@ -1,5 +1,6 @@
 package com.example.submissiondicodingjetpackcompose
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,6 +9,9 @@ import com.example.submissiondicodingjetpackcompose.ui.theme.SubmissionDicodingJ
 
 @Composable
 fun SubmissionDicodingComposeApp(modifier: Modifier=Modifier){
+    Box(modifier = modifier) {
+        
+    }
 
 }
 
