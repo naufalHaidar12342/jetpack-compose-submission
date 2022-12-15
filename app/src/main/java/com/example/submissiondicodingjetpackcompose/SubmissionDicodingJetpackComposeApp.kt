@@ -30,10 +30,6 @@ fun SubmissionDicodingComposeApp(modifier: Modifier=Modifier){
 
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
 
 @Preview(showBackground = true)
 @Composable

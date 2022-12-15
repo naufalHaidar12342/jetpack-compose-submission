@@ -33,7 +33,7 @@ fun GithubUserItem(
     Card(
         onClick = { /*TODO*/ },
         modifier = Modifier
-            .padding(8.dp)
+            .padding(12.dp)
             .shadow(3.dp)
             .fillMaxWidth()
     ) {
@@ -57,14 +57,14 @@ fun GithubUserItem(
                 Text(
                     text = username,
                     fontFamily = FontFamily.SansSerif,
-                    fontSize = 24.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
                     text = name,
-                    fontSize = 16.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.fillMaxWidth()
                 )
