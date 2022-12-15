@@ -41,35 +41,35 @@ fun GithubUserItem(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(6.dp)
         ) {
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(avatar)
-                    .build(),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = modifier
-                    .padding(10.dp)
-                    .size(100.dp)
-                    .clip(CircleShape)
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(avatar)
+                .build(),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = modifier
+                .padding(10.dp)
+                .size(100.dp)
+                .clip(CircleShape)
+        )
+        Spacer(modifier = Modifier.padding(4.dp))
+        Column {
+            Text(
+                text = username,
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 26.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.padding(4.dp))
-            Column {
-                Text(
-                    text = username,
-                    fontFamily = FontFamily.SansSerif,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.fillMaxWidth()
-                )
-                Spacer(modifier = Modifier.padding(4.dp))
-                Text(
-                    text = name,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            Text(
+                text = name,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
+    }
     }
 
 }
