@@ -1,29 +1,38 @@
 package com.example.submissiondicodingjetpackcompose
 
 import androidx.compose.animation.*
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.submissiondicodingjetpackcompose.data.GithubUserRepository
+import com.example.submissiondicodingjetpackcompose.data.GithubUserViewModel
+import com.example.submissiondicodingjetpackcompose.data.GithubUserViewModelFactory
 import com.example.submissiondicodingjetpackcompose.model.GithubUser
 import com.example.submissiondicodingjetpackcompose.model.GithubUserData
 import com.example.submissiondicodingjetpackcompose.ui.components.GithubUserItem
 import com.example.submissiondicodingjetpackcompose.ui.components.ScrollBackToTop
+import com.example.submissiondicodingjetpackcompose.ui.components.UserHeader
 import com.example.submissiondicodingjetpackcompose.ui.theme.SubmissionDicodingJetpackComposeTheme
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SubmissionDicodingComposeApp(modifier: Modifier=Modifier){
+fun SubmissionDicodingComposeApp(
+    modifier: Modifier=Modifier,
+    viewModel: GithubUserViewModel= androidx.lifecycle.viewmodel.compose.viewModel(
+        factory = GithubUserViewModelFactory(
+        GithubUserRepository())
+    )
+){
+    val groupedUsers by viewModel.groupedGithubUser.collectAsState()
 
     Box(modifier = modifier) {
         val scope = rememberCoroutineScope()
@@ -32,13 +41,21 @@ fun SubmissionDicodingComposeApp(modifier: Modifier=Modifier){
             derivedStateOf { listState.firstVisibleItemIndex>0 }
         }
         LazyColumn(state = listState){
-            items(GithubUserData.githubUsers, key = {it.username}){ item: GithubUser ->
-                GithubUserItem(
-                    name = item.fullName,
-                    username = item.username,
-                    avatar = item.profilePicture,
-                )
+            groupedUsers.forEach { (initial, groupedName)->
+                stickyHeader {
+                    UserHeader(userFirstLetter = initial)
+                }
+
+                items(groupedName, key = {it.username}){ item: GithubUser ->
+                    GithubUserItem(
+                        name = item.fullName,
+                        username = item.username,
+                        avatar = item.profilePicture,
+                    )
+                }
             }
+
+
         }
         AnimatedVisibility(
             visible = showButton,
