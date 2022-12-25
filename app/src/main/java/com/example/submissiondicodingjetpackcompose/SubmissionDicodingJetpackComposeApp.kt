@@ -22,7 +22,6 @@ import com.example.submissiondicodingjetpackcompose.ui.screen.HomeScreen
 import com.example.submissiondicodingjetpackcompose.ui.screen.ProfileScreen
 import com.example.submissiondicodingjetpackcompose.ui.theme.SubmissionDicodingJetpackComposeTheme
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SubmissionDicodingComposeApp(
     modifier: Modifier=Modifier,
