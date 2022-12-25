@@ -2,4 +2,6 @@
     <string name="app_name">Submission Dicoding Jetpack Compose</string>
     <string name="scroll_to_top">Scroll to Top</string>
     <string name="search_github_user">Find available github user</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
 </resources>
