@@ -29,7 +29,7 @@ fun GithubUserItem(
     modifier: Modifier=Modifier,
 ){
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(12.dp)
             .shadow(3.dp)
             .fillMaxWidth()
@@ -44,7 +44,7 @@ fun GithubUserItem(
                 .build(),
             contentDescription = null,
             contentScale = ContentScale.Fit,
-            modifier = modifier
+            modifier = Modifier
                 .padding(10.dp)
                 .size(100.dp)
                 .clip(CircleShape)
