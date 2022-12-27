@@ -15,7 +15,8 @@ fun HomeScreen(
     modifier: Modifier=Modifier,
     viewModel:GithubUserViewModel= viewModel(
         factory = GithubUserViewModelFactory(RepositoryInjection.provideRepository())
-    )
+    ),
+    navigateToDetail:(String)-> Unit
 ){
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
         when(uiState){
@@ -25,7 +26,8 @@ fun HomeScreen(
             is UiState.Success -> {
                     HomeContent(
                         githubUsers = uiState.data,
-                        modifier = modifier
+                        modifier = modifier,
+                        navigateToDetail = navigateToDetail
                     )
             }
             is  UiState.Error -> {}

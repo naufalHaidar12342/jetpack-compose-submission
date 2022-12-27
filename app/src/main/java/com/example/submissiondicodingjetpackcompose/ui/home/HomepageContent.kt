@@ -2,6 +2,7 @@ package com.example.submissiondicodingjetpackcompose.ui.home
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -24,13 +25,14 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeContent(
-    githubUsers:List<GithubUser>,
-    modifier: Modifier=Modifier,
+    githubUsers: List<GithubUser>,
+    modifier: Modifier = Modifier,
     viewModel: GithubUserViewModel = viewModel(
         factory = GithubUserViewModelFactory(
             GithubUserRepository()
         )
     ),
+    navigateToDetail: (String) -> Unit
 ) {
     val groupedUsers by viewModel.groupedGithubUser.collectAsState()
     Box(modifier = modifier) {
@@ -50,6 +52,11 @@ fun HomeContent(
                         name = item.fullName,
                         username = item.username,
                         avatar = item.profilePicture,
+                        modifier = Modifier.clickable {
+                            navigateToDetail(item.username)
+                        },
+                        
+
                     )
                 }
             }

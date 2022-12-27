@@ -36,7 +36,7 @@ fun BottomNavigationBar(
             NavigationItem(
                 icon = Icons.Default.AccountCircle,
                 menu = Menu.Profile,
-                title = stringResource(R.string.menu_profile)
+                title = stringResource(R.string.menu_profile),
             ),
         )
 

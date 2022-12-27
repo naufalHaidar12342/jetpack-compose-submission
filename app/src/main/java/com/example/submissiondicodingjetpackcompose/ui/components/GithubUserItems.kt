@@ -3,7 +3,6 @@ package com.example.submissiondicodingjetpackcompose.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,16 +21,14 @@ import coil.request.ImageRequest
 import com.example.submissiondicodingjetpackcompose.R
 import com.example.submissiondicodingjetpackcompose.ui.theme.SubmissionDicodingJetpackComposeTheme
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GithubUserItem(
     name:String,
     username:String,
     avatar:Int,
-    modifier: Modifier=Modifier
+    modifier: Modifier=Modifier,
 ){
     Card(
-        onClick = { /*TODO*/ },
         modifier = Modifier
             .padding(12.dp)
             .shadow(3.dp)
